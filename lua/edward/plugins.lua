@@ -2,7 +2,6 @@
 lvim.plugins = {
 	"nvim-treesitter/playground",
 	"mfussenegger/nvim-jdtls",
-	"rcarriga/nvim-dap-ui",
 	"karb94/neoscroll.nvim",
 	"j-hui/fidget.nvim",
 	"windwp/nvim-ts-autotag",
@@ -38,8 +37,11 @@ lvim.plugins = {
 			end, 100)
 		end,
 	},
-
 	{ "zbirenbaum/copilot-cmp", after = { "copilot.lua", "nvim-cmp" } },
+	{
+		"folke/trouble.nvim",
+		cmd = "TroubleToggle",
+	},
 
 	-- https://github.com/jose-elias-alvarez/typescript.nvim
 	-- "rmagatti/auto-session",

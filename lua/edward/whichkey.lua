@@ -71,6 +71,15 @@ lvim.builtin.which_key.mappings["g"] = {
 		p = { "<cmd>Gist -b -p<cr>", "Create Private" },
 	},
 }
+lvim.builtin.which_key.mappings["t"] = {
+	name = "Diagnostics",
+	t = { "<cmd>TroubleToggle<cr>", "trouble" },
+	w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
+	d = { "<cmd>TroubleToggle document_diagnostics<cr>", "document" },
+	q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
+	l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+	r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
+}
 lvim.builtin.which_key.mappings["l"] = {
 	name = "LSP",
 	a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
