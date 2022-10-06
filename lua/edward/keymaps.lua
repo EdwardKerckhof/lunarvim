@@ -25,8 +25,8 @@ keymap("n", "<m-\\>", ":tabonly<cr>", opts)
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
 keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<A-h>", ":vertical resize -2<CR>", opts)
+keymap("n", "<A-l>", ":vertical resize +2<CR>", opts)
 
 -- Naviagate buffers
 keymap("n", "<TAB>", ":bnext<CR>", opts)
@@ -75,10 +75,10 @@ keymap("c", "<C-j>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, nore
 keymap("c", "<C-k>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
 
 keymap(
-  "n",
-  "<F6>",
-  [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]],
-  opts
+	"n",
+	"<F6>",
+	[[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]],
+	opts
 )
 keymap("n", "<F7>", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
 keymap("n", "<C-z>", "<cmd>ZenMode<cr>", opts)
@@ -89,7 +89,7 @@ keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
 keymap("x", "<m-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
 keymap("n", "<m-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 
-vim.cmd [[
+vim.cmd([[
   function! QuickFixToggle()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
       copen
@@ -97,21 +97,21 @@ vim.cmd [[
       cclose
     endif
   endfunction
-]]
+]])
 
 keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
 
 M.show_documentation = function()
-  local filetype = vim.bo.filetype
-  if vim.tbl_contains({ "vim", "help" }, filetype) then
-    vim.cmd("h " .. vim.fn.expand "<cword>")
-  elseif vim.tbl_contains({ "man" }, filetype) then
-    vim.cmd("Man " .. vim.fn.expand "<cword>")
-  elseif vim.fn.expand "%:t" == "Cargo.toml" then
-    require("crates").show_popup()
-  else
-    vim.lsp.buf.hover()
-  end
+	local filetype = vim.bo.filetype
+	if vim.tbl_contains({ "vim", "help" }, filetype) then
+		vim.cmd("h " .. vim.fn.expand("<cword>"))
+	elseif vim.tbl_contains({ "man" }, filetype) then
+		vim.cmd("Man " .. vim.fn.expand("<cword>"))
+	elseif vim.fn.expand("%:t") == "Cargo.toml" then
+		require("crates").show_popup()
+	else
+		vim.lsp.buf.hover()
+	end
 end
 vim.api.nvim_set_keymap("n", "K", ":lua require('edward.keymaps').show_documentation()<CR>", opts)
 
