@@ -13,7 +13,6 @@ lvim.plugins = {
 	"moll/vim-bbye",
 	"folke/todo-comments.nvim",
 	"windwp/nvim-spectre",
-	"is0n/jaq-nvim",
 	{
 		"0x100101/lab.nvim",
 		run = "cd js && npm ci",
@@ -27,27 +26,35 @@ lvim.plugins = {
 	"lunarvim/darkplus.nvim",
 	"lunarvim/templeos.nvim",
 	{
-		"github/copilot.vim",
+		"tzachar/cmp-tabnine",
+		run = "./install.sh",
+		requires = "hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		event = { "VimEnter" },
+		config = function()
+			vim.defer_fn(function()
+				require("copilot").setup({
+					plugin_manager_path = os.getenv("LUNARVIM_RUNTIME_DIR") .. "/site/pack/packer",
+				})
+			end, 100)
+		end,
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup()
+		end,
 	},
 	{
 		"folke/trouble.nvim",
 		cmd = "TroubleToggle",
 	},
-	{
-		"chipsenkbeil/distant.nvim",
-		config = function()
-			require("distant").setup({
-				-- Applies Chip's personal settings to every machine you connect to
-				--
-				-- 1. Ensures that distant servers terminate with no connections
-				-- 2. Provides navigation bindings for remote directories
-				-- 3. Provides keybinding to jump into a remote file's parent directory
-				["*"] = require("distant.settings").chip_default(),
-			})
-		end,
-	},
-
-	-- https://github.com/jose-elias-alvarez/typescript.nvim
-	-- "rmagatti/auto-session",
-	-- "rmagatti/session-lens"
+	"kevinhwang91/nvim-bqf",
+	"is0n/jaq-nvim",
+	"hrsh7th/cmp-emoji",
+	"TimUntersberger/neogit",
 }

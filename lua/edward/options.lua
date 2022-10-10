@@ -1,6 +1,7 @@
 lvim.log.level = "warn"
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.illuminate.active = true
 lvim.builtin.bufferline.active = true
 lvim.builtin.bufferline.options.middle_mouse_command = "bdelete! %s"
 lvim.builtin.notify.active = true

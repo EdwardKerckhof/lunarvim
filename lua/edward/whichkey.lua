@@ -83,7 +83,7 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.builtin.which_key.mappings["l"] = {
 	name = "LSP",
 	a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-	c = { "<cmd>lua require('edward.lsp').server_capabilities()<cr>", "Get Capabilities" },
+	c = { "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<cr>", "Get Capabilities" },
 	d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
 	w = {
 		"<cmd>Telescope lsp_workspace_diagnostics<cr>",
