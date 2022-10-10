@@ -27,20 +27,24 @@ lvim.plugins = {
 	"lunarvim/darkplus.nvim",
 	"lunarvim/templeos.nvim",
 	{
-		"zbirenbaum/copilot.lua",
-		event = { "VimEnter" },
-		config = function()
-			vim.defer_fn(function()
-				require("copilot").setup({
-					plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
-				})
-			end, 100)
-		end,
+		"github/copilot.vim",
 	},
-	{ "zbirenbaum/copilot-cmp", after = { "copilot.lua", "nvim-cmp" } },
 	{
 		"folke/trouble.nvim",
 		cmd = "TroubleToggle",
+	},
+	{
+		"chipsenkbeil/distant.nvim",
+		config = function()
+			require("distant").setup({
+				-- Applies Chip's personal settings to every machine you connect to
+				--
+				-- 1. Ensures that distant servers terminate with no connections
+				-- 2. Provides navigation bindings for remote directories
+				-- 3. Provides keybinding to jump into a remote file's parent directory
+				["*"] = require("distant.settings").chip_default(),
+			})
+		end,
 	},
 
 	-- https://github.com/jose-elias-alvarez/typescript.nvim

@@ -15,6 +15,10 @@ M.setup = function()
 		debug = false,
 		sources = {
 			formatting.prettier.with({
+				only_local = "node_modules/.bin",
+				dynamic_command = function()
+					return "prettier"
+				end,
 				filetypes = {
 					"javascript",
 					"javascriptreact",
