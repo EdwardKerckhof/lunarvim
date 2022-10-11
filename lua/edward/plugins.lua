@@ -116,12 +116,6 @@ lvim.plugins = {
 		end,
 	},
 	{
-		"Pocco81/AutoSave.nvim",
-		config = function()
-			require("autosave").setup()
-		end,
-	},
-	{
 		"karb94/neoscroll.nvim",
 		event = "WinScrolled",
 		config = function()
@@ -138,5 +132,11 @@ lvim.plugins = {
 				post_hook = nil, -- Function to run after the scrolling animation ends
 			})
 		end,
+	},
+	{ "itchyny/vim-cursorword" },
+	{ "tpope/vim-repeat" },
+	{
+		"felipec/vim-sanegx",
+		event = "BufRead",
 	},
 }
