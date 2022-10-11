@@ -12,7 +12,6 @@ lvim.plugins = {
 	},
 	"christianchiarulli/harpoon",
 	"MattesGroeger/vim-bookmarks",
-	"NvChad/nvim-colorizer.lua",
 	"ghillb/cybu.nvim",
 	"moll/vim-bbye",
 	"folke/todo-comments.nvim",
@@ -92,5 +91,35 @@ lvim.plugins = {
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 		end,
 	},
-	"folke/lsp-colors.nvim",
+	{
+		"folke/lsp-colors.nvim",
+		event = "BufRead",
+	},
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup({ "css", "scss", "html", "javascript" }, {
+				RGB = true, -- #RGB hex codes
+				RRGGBB = true, -- #RRGGBB hex codes
+				RRGGBBAA = true, -- #RRGGBBAA hex codes
+				rgb_fn = true, -- CSS rgb() and rgba() functions
+				hsl_fn = true, -- CSS hsl() and hsla() functions
+				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+				css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+			})
+		end,
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "BufRead",
+		config = function()
+			require("lsp_signature").on_attach()
+		end,
+	},
+	{
+		"Pocco81/AutoSave.nvim",
+		config = function()
+			require("autosave").setup()
+		end,
+	},
 }
