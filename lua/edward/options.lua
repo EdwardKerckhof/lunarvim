@@ -17,12 +17,6 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.dap.active = true
 lvim.builtin.cmp.completion = { completion = { completeopt = "menu,menuone, noinsert" } }
 lvim.colorscheme = "tokyonight"
-vim.opt.showtabline = 0
-
--- neovide
-vim.g.neovide_refresh_rate = 60
-vim.g.neovide_fullscreen = false
-vim.g.neovide_remember_window_size = true
 
 local options = {
 	backup = false, -- creates a backup file
