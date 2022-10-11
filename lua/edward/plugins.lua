@@ -84,7 +84,12 @@ lvim.plugins = {
 		end,
 	},
 	"ggandor/lightspeed.nvim",
+	"tpope/vim-surround",
 	{
-		"tpope/vim-surround",
+		"andymass/vim-matchup",
+		event = "CursorMoved",
+		config = function()
+			vim.g.matchup_matchparen_offscreen = { method = "popup" }
+		end,
 	},
 }

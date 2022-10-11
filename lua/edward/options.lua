@@ -14,6 +14,8 @@ lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
 lvim.builtin.nvimtree.setup.respect_buf_cwd = false
 lvim.builtin.breadcrumbs.active = true
 lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.autotag.enable = true
+lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.dap.active = true
 lvim.builtin.cmp.completion = { completion = { completeopt = "menu,menuone, noinsert" } }
 lvim.colorscheme = "tokyonight"
