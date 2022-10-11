@@ -10,7 +10,6 @@ lvim.plugins = {
 			require("nvim-ts-autotag").setup()
 		end,
 	},
-	"kylechui/nvim-surround",
 	"christianchiarulli/harpoon",
 	"MattesGroeger/vim-bookmarks",
 	"NvChad/nvim-colorizer.lua",
@@ -77,12 +76,15 @@ lvim.plugins = {
 		end,
 	},
 	{
-
 		"nacro90/numb.nvim",
 		config = function()
 			require("numb").setup({
 				hide_relativenumbers = true,
 			})
 		end,
+	},
+	"ggandor/lightspeed.nvim",
+	{
+		"tpope/vim-surround",
 	},
 }

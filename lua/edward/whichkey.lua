@@ -23,8 +23,8 @@ lvim.builtin.which_key.mappings["d"] = {
 	u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
 	x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
 }
-lvim.builtin.which_key.mappings["f"] = {
-	name = "Find",
+lvim.builtin.which_key.mappings["s"] = {
+	name = "Search",
 	b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 	c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 	f = { "<cmd>Telescope find_files<cr>", "Find files" },
@@ -120,7 +120,6 @@ lvim.builtin.which_key.mappings["l"] = {
 lvim.builtin.which_key.mappings[";"] = nil
 lvim.builtin.which_key.mappings["c"] = nil
 lvim.builtin.which_key.mappings["L"] = nil
-lvim.builtin.which_key.mappings["s"] = nil
 lvim.builtin.which_key.mappings["w"] = nil
 
 local m_opts = {
@@ -144,11 +143,6 @@ local m_mappings = {
 	l = { "<cmd>lua require('edward.bfs').open()<cr>", "Buffers" },
 	j = { "<cmd>silent BookmarkNext<cr>", "Next" },
 	k = { "<cmd>silent BookmarkPrev<cr>", "Prev" },
-	S = { "<cmd>silent BookmarkShowAll<cr>", "Prev" },
-	-- s = {
-	--   "<cmd>lua require('telescope').extensions.vim_bookmarks.all({ hide_filename=false, prompt_title=\"bookmarks\", shorten_path=false })<cr>",
-	--   "Show",
-	-- },
 	x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
 }
 
