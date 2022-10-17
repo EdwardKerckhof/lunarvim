@@ -9,6 +9,7 @@ lvim.builtin.terminal.active = true
 lvim.builtin.project.active = false
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
+lvim.builtin.nvimtree.setup.filters.dotfiles = false
 lvim.builtin.nvimtree.setup.update_cwd = false
 lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
 lvim.builtin.nvimtree.setup.respect_buf_cwd = false

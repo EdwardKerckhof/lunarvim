@@ -139,4 +139,19 @@ lvim.plugins = {
 		"felipec/vim-sanegx",
 		event = "BufRead",
 	},
+	{
+		"jakewvincent/mkdnflow.nvim",
+		config = function()
+			require("mkdnflow").setup({})
+		end,
+	},
+	"ekickx/clipboard-image.nvim",
+	{
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		ft = { "markdown" },
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+	},
 }
