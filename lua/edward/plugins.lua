@@ -154,4 +154,33 @@ lvim.plugins = {
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
 	},
+	"simrat39/rust-tools.nvim",
+	{
+		"saecki/crates.nvim",
+		tag = "v0.3.0",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("crates").setup({
+				null_ls = {
+					enabled = true,
+					name = "crates.nvim",
+				},
+			})
+		end,
+	},
+	{
+		"jinh0/eyeliner.nvim",
+		config = function()
+			require("eyeliner").setup({
+				highlight_on_key = true,
+			})
+		end,
+	},
+	"jose-elias-alvarez/typescript.nvim",
+	"mxsdev/nvim-dap-vscode-js",
+	{
+		"microsoft/vscode-js-debug",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npm run compile",
+	},
 }

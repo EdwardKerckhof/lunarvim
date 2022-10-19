@@ -1,0 +1,111 @@
+-- Setup lsp.
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver" })
+
+local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+local capabilities = require("lvim.lsp").common_capabilities()
+
+require("typescript").setup({
+	-- disable_commands = false, -- prevent the plugin from creating Vim commands
+	debug = false, -- enable debug logging for commands
+	go_to_source_definition = {
+		fallback = true, -- fall back to standard LSP definition on failure
+	},
+	server = { -- pass options to lspconfig's setup method
+		on_attach = require("lvim.lsp").common_on_attach,
+		on_init = require("lvim.lsp").common_on_init,
+		capabilities = capabilities,
+	},
+})
+
+-- Set a formatter.
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
+	{
+		command = "prettier",
+		filetypes = {
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"vue",
+			"css",
+			"scss",
+			"less",
+			"html",
+			"json",
+			"yaml",
+			"markdown",
+			"graphql",
+		},
+	},
+	{
+		command = "eslint_d",
+		filetypes = {
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"vue",
+		},
+	},
+})
+
+require("dap-vscode-js").setup({
+	-- node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
+	debugger_path = mason_path .. "packages/js-debug-adapter", -- Path to vscode-js-debug installation.
+	-- debugger_cmd = { "js-debug-adapter" }, -- Command to use to launch the debug server. Takes precedence over `node_path` and `debugger_path`.
+	adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" }, -- which adapters to register in nvim-dap
+})
+
+for _, language in ipairs({ "typescript", "javascript" }) do
+	require("dap").configurations[language] = {
+		{
+			type = "pwa-node",
+			request = "launch",
+			name = "Debug Nest",
+			runtimeExecutable = "yarn",
+			runtimeArgs = { "run", "start:debug", "--", "--inspect-brk" },
+			autoAttachChildProcesses = true,
+			restart = true,
+			sourceMaps = true,
+			stopOnEntry = false,
+			program = "${file}",
+			cwd = "${workspaceFolder}",
+		},
+		{
+			type = "pwa-node",
+			request = "attach",
+			name = "Attach",
+			processId = require("dap.utils").pick_process,
+			cwd = "${workspaceFolder}",
+		},
+		{
+			type = "pwa-node",
+			name = "Run Script: dev",
+			request = "launch",
+			runtimeExecutable = "yarn",
+			runtimeArgs = { "run", "dev" },
+			-- autoAttachChildProcesses = true,
+			-- restart = true,
+			-- sourceMaps = true,
+			-- stopOnEntry = false,
+			-- program = "${file}",
+			cwd = "${workspaceFolder}",
+		},
+	}
+end
+
+-- Set a linter.
+local linters = require("lvim.lsp.null-ls.linters")
+linters.setup({
+	{
+		command = "eslint_d",
+		filetypes = {
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"vue",
+		},
+	},
+})
