@@ -183,4 +183,11 @@ lvim.plugins = {
 		opt = true,
 		run = "npm install --legacy-peer-deps && npm run compile",
 	},
+	{
+		"akinsho/flutter-tools.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("flutter-tools").setup()
+		end,
+	},
 }

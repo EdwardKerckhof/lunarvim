@@ -1,5 +1,8 @@
-require("edward.lsp.languages.rust")
 require("edward.lsp.languages.js-ts")
+require("lvim.lsp.manager").setup("emmet_ls")
+require("lvim.lsp.manager").setup("tailwindcss", {
+	filetypes = { "html", "vue", "typescriptreact", "javascriptreact" },
+})
 
 lvim.format_on_save = true
 lvim.lsp.diagnostics.virtual_text = false
