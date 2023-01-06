@@ -190,4 +190,5 @@ lvim.plugins = {
 			require("flutter-tools").setup()
 		end,
 	},
+	"petertriho/nvim-scrollbar",
 }

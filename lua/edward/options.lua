@@ -4,7 +4,6 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.illuminate.active = true
 lvim.builtin.bufferline.active = true
 lvim.builtin.bufferline.options.middle_mouse_command = "bdelete! %s"
-lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.project.active = false
 lvim.builtin.nvimtree.setup.view.side = "left"
