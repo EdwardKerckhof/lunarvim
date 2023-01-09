@@ -10,6 +10,11 @@ local keymap = vim.keymap.set
 keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", opts)
 keymap("n", "<C-i>", "<C-i>", opts)
 
+-- Renamers
+keymap("i", "<F2>", '<cmd>lua require("renamer").rename()<cr>', opts)
+keymap("n", "<F2>", '<cmd>lua require("renamer").rename()<cr>', opts)
+keymap("v", "<F2>", '<cmd>lua require("renamer").rename()<cr>', opts)
+
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)

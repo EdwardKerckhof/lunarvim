@@ -1,11 +1,12 @@
 require("edward.lsp.languages.js-ts")
-require("lvim.lsp.manager").setup("emmet_ls")
+require("edward.lsp.languages.emmet")
 require("lvim.lsp.manager").setup("tailwindcss", {
-	filetypes = { "html", "vue", "typescriptreact", "javascriptreact" },
+	filetypes = { "html", "vue", "astro", "typescriptreact", "javascriptreact" },
 })
 
 lvim.format_on_save = true
 lvim.lsp.diagnostics.virtual_text = false
+lvim.lsp.diagnostics.float.focusable = true
 
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
 

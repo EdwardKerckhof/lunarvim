@@ -191,4 +191,14 @@ lvim.plugins = {
 		end,
 	},
 	"petertriho/nvim-scrollbar",
+	"renerocksai/telekasten.nvim",
+	"renerocksai/calendar-vim",
+	{
+		"filipdutescu/renamer.nvim",
+		branch = "master",
+		requires = { { "nvim-lua/plenary.nvim" } },
+		config = function()
+			require("renamer").setup({})
+		end,
+	},
 }
